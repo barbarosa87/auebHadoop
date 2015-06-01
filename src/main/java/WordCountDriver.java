@@ -1,6 +1,7 @@
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -19,7 +20,7 @@ public class WordCountDriver extends Configured implements Tool {
 
 		Configuration conf = getConf();
 		Job job = Job.getInstance(conf);
-		job.setJobName("Test driver");
+		job.setJobName("PowerConsumption Calculator");
 		job.setJarByClass(WordCountDriver.class);
 
 		String[] arg0 = new GenericOptionsParser(conf, args).getRemainingArgs();
@@ -42,7 +43,7 @@ public class WordCountDriver extends Configured implements Tool {
 		job.setOutputFormatClass(TextOutputFormat.class);
 
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(IntWritable.class);
+		job.setOutputValueClass(FloatWritable.class);
 		job.waitForCompletion(true);
 		
 		return 0;
