@@ -23,6 +23,7 @@ public class WordCountMapper extends
 			word.set(itr.nextToken());
 			context.write(word, one);
 
+			
 		}
 
 	}
