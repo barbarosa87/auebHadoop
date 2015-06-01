@@ -10,7 +10,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 public class WordCountMapper extends
 		Mapper<LongWritable, Text,Text, FloatWritable > {
 
-	private final static IntWritable one = new IntWritable(1);
+	
 	private Text word = new Text();
 	public static final String startTime1 = "00:00";
 	public static final String endTimeslot1 = "06:00";
@@ -38,16 +38,19 @@ public class WordCountMapper extends
 					&& !word.toString().contains("?")) {
 
 				String[] splitPerHours = splitLine[1].split(":");
-
+                String[] splitPerMonth= splitLine[0].split("/");
 				if (Integer.parseInt(splitPerHours[0]) > 0
 						&& Integer.parseInt(splitPerHours[0]) < 6) {
 //					context.write(new FloatWritable(
 //							Float.parseFloat((splitLine[6]))), new Text("00:00-06:00"));
-					context.write(new Text("00:00-06:00SubMet1"), new FloatWritable(
+					String writeTextSubMet1=splitPerMonth[1]+";00:00-06:00SubMet1";
+					String writeTextSubMet2=splitPerMonth[1]+";00:00-06:00SubMet2";
+					String writeTextSubMet3=splitPerMonth[1]+";00:00-06:00SubMet3";
+					context.write(new Text(writeTextSubMet1), new FloatWritable(
 							Float.parseFloat((splitLine[6]))));
-					context.write(new Text("00:00-06:00SubMet2"), new FloatWritable(
+					context.write(new Text(writeTextSubMet2), new FloatWritable(
 							Float.parseFloat((splitLine[7]))));
-					context.write(new Text("00:00-06:00SubMet3"), new FloatWritable(
+					context.write(new Text(writeTextSubMet3), new FloatWritable(
 							Float.parseFloat((splitLine[8]))));
 				}
 			}
