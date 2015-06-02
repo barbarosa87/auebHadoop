@@ -15,15 +15,22 @@ public class CountTimesotReducer extends
 
 		float sum = 0;
 		int counter=0;
+		float max=500;
 		for (FloatWritable value : values) {
+			
+			//Calculating sum
 			sum += value.get();
 			counter++;
+			//Calculating max;
+			if(max>value.get()){
+				max=value.get();
+			}
 		}
 		
 		
 		Float average=sum/counter;
 
-		context.write(key,new FloatWritable(average) );
+		context.write(new Text(key.toString()+";"+String.valueOf(max)),new FloatWritable(average) );
 
 	}
 
