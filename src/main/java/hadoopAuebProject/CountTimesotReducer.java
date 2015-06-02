@@ -1,10 +1,7 @@
 package hadoopAuebProject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -12,6 +9,7 @@ import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 
 public class CountTimesotReducer extends
 		Reducer<Text, DoubleWritable, Text, DoubleWritable> {
+
 
 	private MultipleOutputs<Text, DoubleWritable> mos;
 
@@ -21,6 +19,8 @@ public class CountTimesotReducer extends
 
 	}
 
+	 
+	 
 	public void reduce(Text key, Iterable<DoubleWritable> values, Context context)
 			throws IOException, InterruptedException {
 
@@ -51,7 +51,7 @@ public class CountTimesotReducer extends
 		if (key.toString().contains("MONDAY") || key.toString().contains("TUESDAY")
 				|| key.toString().contains("WEDNESDAY")
 				|| key.toString().contains("THURSDAY") || key.toString().contains("FRIDAY")
-				|| key.toString().contains("SUTERDAY") || key.toString().contains("SUNDAY")) {
+				|| key.toString().contains("SATURDAY") || key.toString().contains("SUNDAY")) {
 			mos.write(new Text(key.toString() + ";" + String.valueOf(max)),
 					new DoubleWritable(average), "weekdayhistogram");
 		} else if (key.toString().contains("JANUARY") || key.toString().contains("FEBRUARY")
@@ -72,11 +72,13 @@ public class CountTimesotReducer extends
 
 	}
 
-	public void cleanup(Context context) throws IOException,
-			InterruptedException {
 
+	
+	     public void cleanup(Context context) throws IOException, InterruptedException {
+		 
 		mos.close();
+		 
+		 }
 
-	}
 
 }

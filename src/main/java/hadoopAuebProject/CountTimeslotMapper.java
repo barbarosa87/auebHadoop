@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
+
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -116,7 +117,7 @@ public class CountTimeslotMapper extends
 						month = "AUGUST";
 						break;
 					case 8:
-						month = "SEPREMBER";
+						month = "SEPTEMBER";
 						break;
 					case 9:
 						month = "OCTOBER";

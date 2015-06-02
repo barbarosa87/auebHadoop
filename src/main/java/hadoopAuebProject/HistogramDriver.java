@@ -41,6 +41,7 @@ public class HistogramDriver extends Configured implements Tool {
         
         
 		//Defining multiple outputs
+
 		MultipleOutputs.addNamedOutput(job, "monthhistogram", TextOutputFormat.class, TextOutputFormat.class, DoubleWritable.class);
 		MultipleOutputs.addNamedOutput(job, "weekdayhistogram", TextOutputFormat.class, Text.class, DoubleWritable.class);
 		MultipleOutputs.addNamedOutput(job, "timezonehistogram", TextOutputFormat.class, Text.class, DoubleWritable.class);
