@@ -8,14 +8,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
-import org.apache.hadoop.io.FloatWritable;
-import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 public class CountTimeslotMapper extends
-		Mapper<LongWritable, Text, Text, FloatWritable> {
+		Mapper<LongWritable, Text, Text, DoubleWritable> {
 
 	private Text word = new Text();
 
@@ -48,7 +47,7 @@ public class CountTimeslotMapper extends
 						&& !word.toString().contains("?")) {
 
 					String[] splitPerHours = splitLine[1].split(":");
-					String[] splitPerMonth = splitLine[0].split("/");
+					//String[] splitPerMonth = splitLine[0].split("/");
 
 					// Get Week Day
 					Date date = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH).parse(splitLine[0]);
@@ -142,15 +141,15 @@ public class CountTimeslotMapper extends
 						
 						 context.write(
 						 new Text(writeTextSubMet1),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[6]))));
 						 context.write(
 						 new Text(writeTextSubMet2),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[7]))));
 						 context.write(
 						 new Text(writeTextSubMet3),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[8]))));
 						 
 						 
@@ -163,15 +162,15 @@ public class CountTimeslotMapper extends
 						
 						 context.write(
 						 new Text(writeTextSubMet1),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[6]))));
 						 context.write(
 						 new Text(writeTextSubMet2),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[7]))));
 						 context.write(
 						 new Text(writeTextSubMet3),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[8]))));
 						 
 					} else if (Integer.parseInt(splitPerHours[0]) > 12
@@ -183,15 +182,15 @@ public class CountTimeslotMapper extends
 						
 						 context.write(
 						 new Text(writeTextSubMet1),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[6]))));
 						 context.write(
 						 new Text(writeTextSubMet2),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[7]))));
 						 context.write(
 						 new Text(writeTextSubMet3),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[8]))));
 
 					} else if (Integer.parseInt(splitPerHours[0]) > 18
@@ -203,15 +202,15 @@ public class CountTimeslotMapper extends
 						
 						 context.write(
 						 new Text(writeTextSubMet1),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[6]))));
 						 context.write(
 						 new Text(writeTextSubMet2),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[7]))));
 						 context.write(
 						 new Text(writeTextSubMet3),
-						 new FloatWritable(Float
+						 new DoubleWritable(Float
 						 .parseFloat((splitLine[8]))));
 
 					}
@@ -219,7 +218,7 @@ public class CountTimeslotMapper extends
 					for(int i=0;i<3;i++){
 						context.write(
 								 new Text(day+"Submet"+String.valueOf(i+1)),
-								 new FloatWritable(Float
+								 new DoubleWritable(Float
 								 .parseFloat((splitLine[j]))));
 						j++;
 					}
@@ -228,14 +227,14 @@ public class CountTimeslotMapper extends
 					for(int i=0;i<3;i++){
 						context.write(
 								 new Text(month+"Submet"+String.valueOf(i+1)),
-								 new FloatWritable(Float
+								 new DoubleWritable(Float
 								 .parseFloat((splitLine[j]))));
 						j++;
 					}
 					
 					// if (Integer.parseInt(splitPerHours[0]) > 0
 					// && Integer.parseInt(splitPerHours[0]) < 6) {
-					// // context.write(new FloatWritable(
+					// // context.write(new DoubleWritable(
 					// // Float.parseFloat((splitLine[6]))), new
 					// // Text("00:00-06:00"));
 					//
@@ -253,21 +252,21 @@ public class CountTimeslotMapper extends
 					//
 					// context.write(
 					// new Text(writeTextSubMet1),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[6]))));
 					// context.write(
 					// new Text(writeTextSubMet2),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[7]))));
 					// context.write(
 					// new Text(writeTextSubMet3),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[8]))));
 					//
 					//
 					// } else if (Integer.parseInt(splitPerHours[0]) > 6
 					// && Integer.parseInt(splitPerHours[0]) < 12) {
-					// // context.write(new FloatWritable(
+					// // context.write(new DoubleWritable(
 					// // Float.parseFloat((splitLine[6]))), new
 					// // Text("00:00-06:00"));
 					//
@@ -277,19 +276,19 @@ public class CountTimeslotMapper extends
 					// String writeTextSubMet3 = "06:00-12:00SubMet3";
 					// context.write(
 					// new Text(writeTextSubMet1),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[6]))));
 					// context.write(
 					// new Text(writeTextSubMet2),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[7]))));
 					// context.write(
 					// new Text(writeTextSubMet3),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[8]))));
 					// } else if (Integer.parseInt(splitPerHours[0]) > 12
 					// && Integer.parseInt(splitPerHours[0]) < 18) {
-					// // context.write(new FloatWritable(
+					// // context.write(new DoubleWritable(
 					// // Float.parseFloat((splitLine[6]))), new
 					// // Text("00:00-06:00"));
 					//
@@ -300,20 +299,20 @@ public class CountTimeslotMapper extends
 					//
 					// context.write(
 					// new Text(writeTextSubMet1),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[6]))));
 					// context.write(
 					// new Text(writeTextSubMet2),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[7]))));
 					// context.write(
 					// new Text(writeTextSubMet3),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[8]))));
 					//
 					// } else if (Integer.parseInt(splitPerHours[0]) > 18
 					// && Integer.parseInt(splitPerHours[0]) < 0) {
-					// // context.write(new FloatWritable(
+					// // context.write(new DoubleWritable(
 					// // Float.parseFloat((splitLine[6]))), new
 					// // Text("00:00-06:00"));
 					//
@@ -324,15 +323,15 @@ public class CountTimeslotMapper extends
 					//
 					// context.write(
 					// new Text(writeTextSubMet1),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[6]))));
 					// context.write(
 					// new Text(writeTextSubMet2),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[7]))));
 					// context.write(
 					// new Text(writeTextSubMet3),
-					// new FloatWritable(Float
+					// new DoubleWritable(Float
 					// .parseFloat((splitLine[8]))));
 					// }
 				}
