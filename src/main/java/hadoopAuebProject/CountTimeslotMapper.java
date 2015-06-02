@@ -9,7 +9,6 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 
 import org.apache.hadoop.io.FloatWritable;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -48,7 +47,7 @@ public class CountTimeslotMapper extends
 						&& !word.toString().contains("?")) {
 
 					String[] splitPerHours = splitLine[1].split(":");
-					String[] splitPerMonth = splitLine[0].split("/");
+					//String[] splitPerMonth = splitLine[0].split("/");
 
 					// Get Week Day
 					Date date = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH).parse(splitLine[0]);
