@@ -1,3 +1,5 @@
+package hadoopAuebProject;
+
 import java.io.IOException;
 
 import org.apache.hadoop.io.FloatWritable;
@@ -5,7 +7,7 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class WordCountReducer extends
+public class CountTimesotReducer extends
 		Reducer<Text, FloatWritable,Text,FloatWritable> {
 
 	public void reduce(Text key, Iterable<FloatWritable> values, Context context)
