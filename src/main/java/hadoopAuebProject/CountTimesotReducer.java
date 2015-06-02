@@ -1,10 +1,7 @@
 package hadoopAuebProject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -12,6 +9,7 @@ import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 
 public class CountTimesotReducer extends
 		Reducer<Text, DoubleWritable, Text, DoubleWritable> {
+
 
 	private MultipleOutputs<Text, DoubleWritable> mos;
 
@@ -21,6 +19,8 @@ public class CountTimesotReducer extends
 
 	}
 
+	 
+	 
 	public void reduce(Text key, Iterable<DoubleWritable> values, Context context)
 			throws IOException, InterruptedException {
 
@@ -72,11 +72,13 @@ public class CountTimesotReducer extends
 
 	}
 
-	public void cleanup(Context context) throws IOException,
-			InterruptedException {
 
+	
+	     public void cleanup(Context context) throws IOException, InterruptedException {
+		 
 		mos.close();
+		 
+		 }
 
-	}
 
 }
