@@ -53,7 +53,7 @@ public class CountTimesotReducer extends
 				|| key.toString().contains("THURSDAY") || key.toString().contains("FRIDAY")
 				|| key.toString().contains("SATURDAY") || key.toString().contains("SUNDAY")) {
 			mos.write(new Text(key.toString() + ";" + String.valueOf(max)),
-					new DoubleWritable(average), "weekdayhistogram");
+					new DoubleWritable(average), "weekday_histogram");
 		} else if (key.toString().contains("JANUARY") || key.toString().contains("FEBRUARY")
 				|| key.toString().contains("MARCH") || key.toString().contains("APRIL")
 				|| key.toString().contains("MAY") || key.toString().contains("JUNE")
@@ -61,10 +61,10 @@ public class CountTimesotReducer extends
 				|| key.toString().contains("SEPTEMBER") || key.toString().contains("OCTOBER")
 				|| key.toString().contains("NOVEMBER") || key.toString().contains("DECEMBER")) {
 			mos.write(new Text(key.toString() + ";" + String.valueOf(max)),
-					new DoubleWritable(average), "monthhistogram");
+					new DoubleWritable(average), "month_histogram");
 		} else {
 			mos.write(new Text(key.toString() + ";" + String.valueOf(max)),
-					new DoubleWritable(average), "timezonehistogram");
+					new DoubleWritable(average), "timezone_histogram");
 		}
 
 //		 context.write(new Text(key.toString()+";"+String.valueOf(max)),new

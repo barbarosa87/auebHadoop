@@ -136,9 +136,9 @@ public class CountTimeslotMapper extends
 					if (Integer.parseInt(splitPerHours[0]) > 0
 							&& Integer.parseInt(splitPerHours[0]) < 6) {
 						
-						 String writeTextSubMet1 = "00:00-06:00SubMet1";
-						 String writeTextSubMet2 = "00:00-06:00SubMet2";
-						 String writeTextSubMet3 = "00:00-06:00SubMet3";
+						 String writeTextSubMet1 = "00:00-06:00 SubMet1";
+						 String writeTextSubMet2 = "00:00-06:00 SubMet2";
+						 String writeTextSubMet3 = "00:00-06:00 SubMet3";
 						
 						 context.write(
 						 new Text(writeTextSubMet1),
@@ -157,9 +157,9 @@ public class CountTimeslotMapper extends
 					} else if (Integer.parseInt(splitPerHours[0]) > 6
 							&& Integer.parseInt(splitPerHours[0]) < 12) {
 						
-						 String writeTextSubMet1 = "06:00-12:00SubMet1";
-						 String writeTextSubMet2 = "06:00-12:00SubMet2";
-						 String writeTextSubMet3 = "06:00-12:00SubMet3";
+						 String writeTextSubMet1 = "06:00-12:00 SubMet1";
+						 String writeTextSubMet2 = "06:00-12:00 SubMet2";
+						 String writeTextSubMet3 = "06:00-12:00 SubMet3";
 						
 						 context.write(
 						 new Text(writeTextSubMet1),
@@ -177,9 +177,9 @@ public class CountTimeslotMapper extends
 					} else if (Integer.parseInt(splitPerHours[0]) > 12
 							&& Integer.parseInt(splitPerHours[0]) < 18) {
 						
-						 String writeTextSubMet1 = "12:00-18:00SubMet1";
-						 String writeTextSubMet2 = "12:00-18:00SubMet2";
-						 String writeTextSubMet3 = "12:00-18:00SubMet3";
+						 String writeTextSubMet1 = "12:00-18:00 SubMet1";
+						 String writeTextSubMet2 = "12:00-18:00 SubMet2";
+						 String writeTextSubMet3 = "12:00-18:00 SubMet3";
 						
 						 context.write(
 						 new Text(writeTextSubMet1),
@@ -197,9 +197,9 @@ public class CountTimeslotMapper extends
 					} else if (Integer.parseInt(splitPerHours[0]) > 18
 							&& Integer.parseInt(splitPerHours[0]) < 0) {
 						
-						 String writeTextSubMet1 = "18:00-00:00SubMet1";
-						 String writeTextSubMet2 = "18:00-00:00SubMet2";
-						 String writeTextSubMet3 = "18:00-00:00SubMet3";
+						 String writeTextSubMet1 = "18:00-00:00 SubMet1";
+						 String writeTextSubMet2 = "18:00-00:00 SubMet2";
+						 String writeTextSubMet3 = "18:00-00:00 SubMet3";
 						
 						 context.write(
 						 new Text(writeTextSubMet1),
@@ -218,7 +218,7 @@ public class CountTimeslotMapper extends
                     int j=6;
 					for(int i=0;i<3;i++){
 						context.write(
-								 new Text(day+"Submet"+String.valueOf(i+1)),
+								 new Text(day+" Submet"+String.valueOf(i+1)),
 								 new DoubleWritable(Float
 								 .parseFloat((splitLine[j]))));
 						j++;
@@ -227,7 +227,7 @@ public class CountTimeslotMapper extends
 					j=6;
 					for(int i=0;i<3;i++){
 						context.write(
-								 new Text(month+"Submet"+String.valueOf(i+1)),
+								 new Text(month+" Submet"+String.valueOf(i+1)),
 								 new DoubleWritable(Float
 								 .parseFloat((splitLine[j]))));
 						j++;
